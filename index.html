@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Denial-of-Service Dashboard</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#traffic-analysis">Traffic Analysis</a></li>
+            <li><a href="#settings">Settings</a></li>
+            <li><a href="#logs">Logs</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search logs, alerts, etc.">
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle">🌙</button>
+
+    <!-- Notification Center -->
+    <div class="notification-center">
+        <div class="notification">
+            <span>New update available!</span>
+            <button class="close-notification">✖</button>
+        </div>
+    </div>
+
+    <section id="dashboard">
+        <h1> Distributed Denial-of-Service Dashboard </h1>
+        <div id="alerts">
+            <h2>Alerts</h2>
+            <ul id="alert-list">
+                <li>Attack detected on 08/25/2024 - Severity: High</li>
+                <li>Attack detected on 08/22/2024 - Severity: Medium</li>
+                <li>Attack detected on 08/18/2024 - Severity: Low</li>
+            </ul>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary-container">
+            <div class="summary-card">
+                <h3>Current Threat Level</h3>
+                <p>High</p>
+            </div>
+            <div class="summary-card">
+                <h3>Mitigations Today</h3>
+                <p>5</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="traffic-analysis">
+        <h2>Traffic Analysis</h2>
+        <button id="change-datetime">Change Date & Time</button>
+        <input type="date" id="date-picker" style="display: none;">
+        <div id="graphs-container">
+            <canvas id="traffic-chart-before"></canvas>
+            <canvas id="traffic-chart-after"></canvas>
+        </div>
+    </section>
+
+    <section id="settings">
+        <h2>Protection Settings</h2>
+        <form id="settings-form">
+            <label for="rate-limit">Rate Limit:</label>
+            <input type="number" id="rate-limit" name="rate-limit" required>
+            <button type="submit">Save Settings</button>
+        </form>
+    </section>
+
+    <section id="logs">
+        <h2>Logs and Reports</h2>
+        <div id="log-list">
+            <ul>
+                <li>08/25/2024 14:32 - Mitigation step initiated for High Severity attack.</li>
+                <li>08/22/2024 09:15 - Medium Severity attack mitigated successfully.</li>
+                <li>08/18/2024 18:45 - Low Severity attack detected and blocked.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Rate Limiting Section -->
+    <section id="rate-limiting">
+        <h2>Rate Limiting</h2>
+        <form id="rate-limiting-form">
+            <label for="rate-limit-value">Rate Limit:</label>
+            <input type="number" id="rate-limit-value" name="rate-limit" required>
+            <button type="submit">Update Rate Limit</button>
+        </form>
+    </section>
+
+    <!-- IP Blocking Section -->
+    <section id="ip-blocking">
+        <h2>IP Blocking</h2>
+        <form id="ip-blocking-form">
+            <label for="ip-address">IP Address:</label>
+            <input type="text" id="ip-address" name="ip-address" required>
+            <button type="submit">Block IP</button>
+        </form>
+    </section>
+
+    <!-- CAPTCHA Section -->
+    <section class="captcha-container">
+        <h2>CAPTCHA Verification</h2>
+        <img src="https://via.placeholder.com/300x150" alt="CAPTCHA Image">
+        <input type="text" placeholder="Enter CAPTCHA" required>
+        <button type="submit">Verify</button>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="current-year"></span> DDoS Protection Solution. All rights reserved.</p>
+</footer>
+
+<!-- Login Page Redirect -->
+<script>
+    // Set the current year in the footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Initialize Chart.js for "Before Attack" graph
+    const ctxBefore = document.getElementById('traffic-chart-before').getContext('2d');
+    const trafficChartBefore = new Chart(ctxBefore, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+            datasets: [{
+                label: 'Traffic Before Attack',
+                data: [10, 12, 8, 15, 10, 20, 18, 12],
+                borderColor: 'rgba(52, 152, 219, 1)',  // Light Blue
+                backgroundColor: 'rgba(52, 152, 219, 0.2)',  // Light Blue Transparent
+                fill: true,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Traffic Before DDoS Attack'
+                }
+            }
+        }
+    });
+
+    // Initialize Chart.js for "After Attack" graph
+    const ctxAfter = document.getElementById('traffic-chart-after').getContext('2d');
+    const trafficChartAfter = new Chart(ctxAfter, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+            datasets: [{
+                label: 'Traffic After Attack',
+                data: [20, 25, 28, 18, 15, 12, 9, 5],
+                borderColor: 'rgba(231, 76, 60, 1)',  // Light Red
+                backgroundColor: 'rgba(231, 76, 60, 0.2)',  // Light Red Transparent
+                fill: true,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Traffic After DDoS Attack'
+                }
+            }
+        }
+    });
+
+    // Add real-time updates for the alert list
+    function addAlert(alertText) {
+        const alertList = document.getElementById('alert-list');
+        const newAlert = document.createElement('li');
+        newAlert.textContent = alertText;
+        alertList.prepend(newAlert);
+    }
+
+    // Example of adding a new alert dynamically
+    setTimeout(() => {
+        addAlert('New attack detected on 08/26/2024 - Severity: Critical');
+    }, 5000);
+
+    // Function to change date and time
+    document.getElementById('change-datetime').addEventListener('click', () => {
+        const datePicker = document.getElementById('date-picker');
+        datePicker.style.display = 'block';
+        datePicker.focus();
+    });
+
+    document.getElementById('date-picker').addEventListener('change', (event) => {
+        alert(`Selected Date: ${event.target.value}`);
+    });
+
+    // Toggle dark mode
+    document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+
+    // Close notification
+    document.querySelectorAll('.close-notification').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.target.closest('.notification').style.opacity = '0';
+        });
+    });
+
+    // Form submission handlers (Example)
+    document.getElementById('rate-limiting-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        alert('Rate limiting settings updated');
+    });
+
+    document.getElementById('ip-blocking-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        alert('IP address blocked');
+    });
+
+
+    document.querySelector('.captcha-container button').addEventListener('click', () => {
+        alert('CAPTCHA functionality to be implemented');
+    });
+</script>
+</body>
+</html>

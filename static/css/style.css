@@ -1,0 +1,292 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #002147; /* Dark blue background */
+    color: #fff; /* White text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #00102d; /* Even darker blue for dark mode */
+    color: #d0d0d0; /* Light grey text color for dark mode */
+}
+
+/* Header Styles with Background Image */
+header {
+    background: url('https://via.placeholder.com/1200x400') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #003366; /* Dark blue background for the nav */
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffcc00; /* Bright yellow for hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Search Bar */
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    border: 1px solid #003366; /* Dark blue border */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #003366; /* Dark blue background */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Notification Center */
+.notification-center {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 300px;
+}
+
+.notification {
+    background: #e74c3c; /* Red background for notifications */
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.close-notification {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-notification:hover {
+    color: #bdc3c7; /* Light grey for hover */
+}
+
+/* Dashboard Section */
+section {
+    margin-bottom: 30px;
+    background-color: #003366; /* Dark blue section background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+/* Summary Cards */
+.summary-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.summary-card {
+    background: #004080; /* Medium dark blue */
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Graphs Container */
+#graphs-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+canvas {
+    width: 300px !important; /* Smaller size for graphs */
+    height: 150px !important; /* Smaller size for graphs */
+}
+
+/* Headings and Icon Styles */
+h1, h2 {
+    color: #ffcc00; /* Bright yellow for headings */
+    font-size: 22px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+h1:before, h2:before {
+    content: url('https://img.icons8.com/ios-filled/24/ffffff/shield.png'); /* Example icon with reduced size */
+    margin-right: 10px;
+    display: inline-block;
+}
+
+/* Alerts and Traffic Analysis Section */
+#alerts, #traffic-analysis, #settings, #logs {
+    border-radius: 10px;
+}
+
+/* Rate Limiting and IP Blocking Sections */
+#rate-limiting, #ip-blocking {
+    background-color: #003366; /* Dark blue background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* CAPTCHA Section */
+.captcha-container {
+    background: #003366; /* Dark blue background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.captcha-container img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.captcha-container input {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #002147; /* Dark blue border */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.captcha-container button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #004080; /* Medium dark blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.captcha-container button:hover {
+    background: #003366; /* Darker blue for hover */
+}
+
+/* Login Form */
+#login {
+    background-color: #003366; /* Dark blue background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#login-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+#login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #002147; /* Dark blue border */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#login-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #004080; /* Medium dark blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#login-form button:hover {
+    background: #003366; /* Darker blue for hover */
+}
+
+/* Footer */
+footer {
+    background-color: #003366; /* Dark blue background */
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
